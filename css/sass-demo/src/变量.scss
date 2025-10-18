@@ -1,0 +1,26 @@
+$width: "100px";
+$height: "100px";
+
+.container {
+  width: $width;
+  height: $height;
+
+  .title {
+    $width: "50px";
+    $padding: "20px";
+    $color: #ff00ff !global;
+
+    /* 全局变量与局部变量都存在时，优先使用局部变量的值 */
+    width: $width;
+    height: $height;
+    padding: $padding;
+  }
+
+  /*
+    局部变量在全局使用会报错
+    padding: $padding;
+  */
+
+  /* 使用!global提升作用域*/
+  color: $color;
+}

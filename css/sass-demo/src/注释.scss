@@ -1,0 +1,16 @@
+// 普通注释，编译后不保存
+.container {
+  width: "100%";
+  height: "100%";
+  padding: 24px;
+
+  /*
+    编译后保存结果, 压缩不显示
+  */
+  /*! 使用!开头的注释可以压缩后显示
+  */
+  .title {
+    font-size: 16px;
+    font-weight: 600;
+  }
+}

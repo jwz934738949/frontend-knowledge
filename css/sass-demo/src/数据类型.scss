@@ -1,0 +1,94 @@
+$num1: 10;
+$num2: 5.5;
+$num3: 20px;
+
+.container {
+  width: $num1;
+  height: $num2;
+  font-size: $num3;
+
+  $str1: "10%";
+  $str2: test;
+
+  $padding1: 10px 15px 10px 15px;
+
+  .child1 {
+    color: $str1;
+    background-image: url($str2 + ".png");
+    padding: $padding1;
+  }
+
+  $bool1: false;
+  $bool2: 1 < 5;
+  $bool3: 3+5 == 5-1;
+
+  .child2 {
+    width: $bool1;
+    height: $bool2;
+    padding: $bool3;
+  }
+
+  $null: null;
+  /* 逗号分隔成两个子数组，逗号前为第一个数组，后面为第二个数组 */
+  $padding2: 10px 20px, 20px 10px;
+
+  .child3 {
+    width: $null;
+    padding: $padding2;
+  }
+
+  /* 小括号分隔成了两个数组，编译后会去掉括号 */
+  $padding3: (5px 10px) (10px 5px 8px);
+
+  .child4 {
+    padding: $padding3;
+  }
+
+  /* 数组内容为空，编译报错 */
+  // $padding4: ();
+  $padding5: 1px 2px null 3px 4px () 6px;
+
+  .child5 {
+    // padding: $padding4;
+    padding: $padding5;
+  }
+
+  .child6 {
+    width: nth($padding5, 2);
+  }
+}
+
+/* 数组使用实际案例 */
+$list: 10px 15px 20px 25px;
+
+@each $item in $list {
+  .font-size-#{$item} {
+    font-size: $item;
+  }
+}
+
+$map1: (
+  color: #ff00ff,
+  width: 20px,
+  height: 100px,
+);
+
+.container2 {
+  color: map-get($map1, "color");
+  width: map-get($map1, "width");
+  height: map-get($map1, "height");
+}
+
+/* 字典使用实际案例 */
+$icons: (
+  welcome: "t1",
+  login: "t2",
+);
+
+@each $key, $value in $icons {
+  .icon-#{$key}:before {
+    display: inline-block;
+    font-family: "iconfont";
+    content: $value;
+  }
+}
