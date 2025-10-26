@@ -1,0 +1,11 @@
+.container {
+  width: 150px;
+  height: calc(100% + 50px);
+}
+.container .child1 {
+  width: 100px;
+  height: 200px;
+}
+.container .child2 {
+  font-size: clamp(12px, 1rem + 0.1vw, 16px);
+}

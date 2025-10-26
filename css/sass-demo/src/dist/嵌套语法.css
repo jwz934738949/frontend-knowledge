@@ -1,0 +1,19 @@
+@charset "UTF-8";
+.container {
+  width: 100px;
+  height: 100px;
+  /* 属性嵌套 */
+  font-size: 16px;
+  font-weight: 500;
+  font-style: italic;
+}
+.container .child {
+  width: 50px;
+  height: 50px;
+}
+.container:hover {
+  color: blue;
+}
+.container:active {
+  color: red;
+}

@@ -1,0 +1,11 @@
+@for $var from 1 to 3 {
+  .container-#{$var} {
+    font-size: 1rem * $var;
+  }
+}
+
+@for $var from 1 through 3 {
+  .container-copy-#{$var} {
+    font-size: 1rem * $var;
+  }
+}

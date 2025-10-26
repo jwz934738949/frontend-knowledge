@@ -1,0 +1,24 @@
+.container {
+  width: 100px;
+  height: 100px;
+
+  .child {
+    width: 50px;
+    height: 50px;
+  }
+
+  &:hover {
+    color: blue;
+  }
+
+  &:active {
+    color: red;
+  }
+
+  /* 属性嵌套 */
+  font: {
+    size: 16px;
+    weight: 500;
+    style: italic;
+  }
+}

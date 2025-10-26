@@ -1,0 +1,20 @@
+.container {
+  width: calc(100px + 50px);
+  height: calc(100% + 50px);
+
+  .child1 {
+    $width1: 100px;
+    $width2: 150px;
+    $width3: 200px;
+
+    width: min($width1, $width2, $width3);
+    height: max($width1, $width2, $width3);
+  }
+
+  .child2 {
+    $min-size: 12px;
+    $max-size: 16px;
+
+    font-size: clamp($min-size, 1rem + 0.1vw, $max-size);
+  }
+}

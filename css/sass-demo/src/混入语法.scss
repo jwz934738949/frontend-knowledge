@@ -1,0 +1,114 @@
+@mixin mix1 {
+  font: {
+    size: 14px;
+    weight: 400;
+    style: italic;
+  }
+  background-color: red;
+}
+
+.container1 {
+  @include mix1;
+}
+
+@mixin font-color {
+  color: red;
+}
+@mixin background-color {
+  background-color: blue;
+}
+
+@mixin color {
+  @include font-color;
+  @include background-color;
+}
+
+.container2 {
+  @include color;
+}
+
+// 使用会报错，color中不存在元素选择器
+// @include color;
+
+@mixin color2 {
+  .box {
+    @include font-color;
+    @include background-color;
+  }
+}
+
+@include color2;
+
+@mixin mix2($color, $size: 12px) {
+  color: $color;
+  font-size: $size;
+}
+
+.container3 {
+  @include mix2(#00ff00, 15px);
+}
+
+.container4 {
+  @include mix2(#00f1ee);
+}
+
+.container5 {
+  @include mix2($size: 15px, $color: #ff14ee);
+}
+
+@mixin mix3($shadow...) {
+  box-shadow: $shadow;
+}
+
+.container6 {
+  @include mix3(0 1px 2px rgba(0, 0, 0, 0.5));
+}
+.container7 {
+  @include mix3(0 1px 2px rgba(0, 0, 0, 0.5), 0 2px 5px rgba(100, 0, 0, 0.5));
+}
+
+$colors: red blue yellow;
+@mixin colors($text, $background, $border) {
+  color: $text;
+  background-color: $background;
+  border-color: $border;
+}
+
+.container8 {
+  @include colors($colors...);
+}
+
+@mixin content {
+  width: 100px;
+  height: 50px;
+
+  .child {
+    @content;
+  }
+}
+
+.container9 {
+  @include content {
+    width: 50px;
+    height: 25px;
+    background-color: #ff14ee;
+  }
+}
+
+@mixin content2($font-size) {
+  .child {
+    font-size: $font-size;
+    background-color: red;
+
+    .child2 {
+      @content;
+    }
+  }
+}
+
+.container10 {
+  @include content2(20px) {
+    font-size: 12px;
+    background-color: yellow;
+  }
+}

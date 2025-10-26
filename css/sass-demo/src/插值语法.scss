@@ -1,0 +1,24 @@
+$name: test1;
+$color: color;
+$size: 16px;
+
+$font-size: 12px;
+$line-height: 16px;
+
+.container-#{$name} {
+  background-#{$color}: "red";
+  font-size: #{$size};
+
+  .child1 {
+    font-size: calc(($font-size + $line-height) * 1.5);
+  }
+
+  .child2 {
+    font-size: calc(#{$font-size + $line-height} * 1.5);
+  }
+}
+
+$author: "test-author";
+/*!
+  Author: #{$author}
+*/

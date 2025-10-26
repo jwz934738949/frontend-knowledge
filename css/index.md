@@ -39,10 +39,72 @@
   - 使用()，内容为key:value的形式，如(key1:value1, key2: value2)
   - 使用map-get函数获取对应value
 - 2.3.7. 颜色类型
-  - 使用字符串，#ff00ff（十六进制），rgb，rgba
+  - 使用字符串，#ff00ff（十六进制），rgb，rgba，hsl，hsla
 ```
   样例 ./sass-demo/src/数据类型.scss
 ```   
+##### 2.4. 嵌套语法
+- 使用嵌套实现CSS后代选择器(.parent .child)
+- 使用&代表父元素，实现伪类选择器(.parent:before)
+- 可以使用嵌套语法实现属性的编译
+```
+  样例 ./sass-demo/src/嵌套语法.scss
+```
+##### 2.5. 插值语法
+- 使用#{}进行变量的引入，与js中${}实现效果一致
+- 在calc函数中使用#{},不会直接计算结果，而是将#{}中的内容作为参数，编译后的结果仍然为calc函数；不使用#{}编译后结果为实际值
+- 注释中也可以使用#{}
+```
+  样例 ./sass-demo/src/插值语法.scss
+```
+##### 2.6. 运算
+- 2.6.1. calc
+  - 使用calc()函数进行运算，当参数的单位一致时，会直接计算结果
+- 2.6.2. max/min
+  - 分别获取参数的最大值或者最小值
+- 2.6.3. clamp
+  - 参数有三个，分别是最小值，当前值，最大值
+  - 当前值小于最小值，默认取最小值；大于最大值，默认取最大值；在最小值与最大值之间，则取当前值
+```
+  样例 ./sass-demo/src/运算.scss
+```
+##### 2.7. if语法
+- 2.7.1. 三元运算符
+  - 使用if(condition, value1, value2)
+- 2.7.2. @if
+  - 使用@if,@else if,@else来实现if,else if,else
+```
+  样例 ./sass-demo/src/if语法.scss
+```
+##### 2.8. for语法
+- 使用@for $var from num1 to num2或者使用@for $var from num1 through num2
+- 使用to时，不包含结束索引，使用through会包含结束索引
+```
+  样例 ./sass-demo/src/for语法.scss
+```
+##### 2.9. while语法
+- 使用@while实现while语法，注意在while循环体内需要实现变量更新，避免死循环
+```
+  样例 ./sass-demo/src/while语法.scss
+```
+##### 2.10. each语法
+- 使用@each实现对list或者map的遍历
+- @each $item in list或者@each $key, $value in map
+```
+  样例 ./sass-demo/src/each语法.scss
+```
+##### 2.11. 混入语法
+  - 使用@mixin关键字进行混入内容的定义；使用@include关键字进行混入内容的使用
+  - @mixin中也可以使用@include混入其他内容
+  - 当外层直接使用@include时，必须保证@mixin中存在元素
+  - @mixin可以使用参数，与函数参数类型，可以设置默认值
+  - 参数使用可以按照索引，名称或者展开符进行参数传递
+  - ...展开符也可以用于展开变量为实际属性值
+  - @content关键字用于占位，与插槽功能类似，在@include中可以实现具体的css样式
+  - @content中存在作用域，作用域相互隔离，同时子作用域中的优先级较高
+```
+  样例 ./sass-demo/src/混入语法.scss
+```
 #### 3. 编译
 ##### 3.1. 手动编译
 - 创建scss文件，写入文件内容后，执行scss的编译compile函数，生成对应的css文件

@@ -1,0 +1,9 @@
+$total: 10;
+
+@while $total >=0 {
+  .container-#{$total} {
+    font-weight: calc(1000 - $total * 100);
+  }
+
+  $total: $total - 1;
+}

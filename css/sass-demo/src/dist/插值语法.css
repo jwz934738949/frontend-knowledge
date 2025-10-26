@@ -1,0 +1,14 @@
+.container-test1 {
+  background-color: "red";
+  font-size: 16px;
+}
+.container-test1 .child1 {
+  font-size: 42px;
+}
+.container-test1 .child2 {
+  font-size: calc(28px * 1.5);
+}
+
+/*!
+  Author: test-author
+*/

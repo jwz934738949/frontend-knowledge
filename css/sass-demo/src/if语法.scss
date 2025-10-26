@@ -1,0 +1,25 @@
+$num1: 10;
+
+.container {
+  color: if(3 > $num1, "red", "blue");
+}
+
+.container2 {
+  margin-top: 12px;
+
+  @if 3 > $num1 {
+    color: "yellow";
+  }
+}
+
+.container3 {
+  margin-top: 12px;
+
+  @if 3 == $num1 {
+    color: "red";
+  } @else if 3 < $num1 {
+    color: "yellow";
+  } @else {
+    color: "blue";
+  }
+}
