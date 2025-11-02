@@ -1,0 +1,24 @@
+// 传入背景色，返回对应文字颜色
+@function contrast-color($background-color) {
+  // 背景颜色亮度
+  $brightness: red($background-color) * 0.299 + green($background-color) * 0.587 +
+    blue($background-color) * 0.114;
+
+  @if $brightness > 128 {
+    @return #000000;
+  } @else {
+    @return #ffffff;
+  }
+}
+
+.button {
+  $background-color: #007bff;
+  background-color: $background-color;
+  color: contrast-color($background-color);
+}
+
+.button2 {
+  $background-color: #ffddf0;
+  background-color: $background-color;
+  color: contrast-color($background-color);
+}

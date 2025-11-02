@@ -1,0 +1,125 @@
+@import "variable";
+@import "mixin";
+@import "header";
+
+.container {
+  @include reset-margin-padding;
+  width: 40px;
+}
+
+.box1 {
+  @import "test";
+  width: 50px;
+}
+
+.box2 {
+  @import url("abcd");
+  @import "https://12345.com";
+  @import "test.css";
+  @import "landscape" screen and (orientation: landscape);
+}
+
+.box3 {
+  height: 100%;
+  @media (min-width: 768px) {
+    height: 50%;
+  }
+}
+
+$max-width: 1200px;
+.box4 {
+  width: $max-width;
+  @media (max-width: $max-width) {
+    width: 100%;
+  }
+}
+
+@mixin respond-to($breakpoint) {
+  @if $breakpoint == "mobile" {
+    @media (max-width: 768px) {
+      @content;
+    }
+  } @else if $breakpoint == "tablet" {
+    @media (min-width: 769px) and (max-width: 1024px) {
+      @content;
+    }
+  } @else if $breakpoint == "desktop" {
+    @media (min-width: 1025px) {
+      @content;
+    }
+  }
+}
+
+.container {
+  width: 80%;
+  @include respond-to("mobile") {
+    width: 100%;
+  }
+  @include respond-to("desktop") {
+    width: 70%;
+  }
+}
+
+.base-button {
+  width: 30px;
+  height: 100px;
+  border-radius: 12px;
+  padding: 4px 8px;
+}
+
+.primary-button {
+  @extend .base-button;
+  background-color: #007bff;
+  color: #ffffff;
+}
+
+.success-button {
+  @extend .base-button;
+  background-color: #00ff00;
+  color: #ffffff;
+}
+
+%base-button2 {
+  width: 30px;
+  height: 100px;
+  border-radius: 12px;
+  padding: 4px 8px;
+}
+
+.primary-button2 {
+  @extend %base-button2;
+  background-color: #007bff;
+  color: #ffffff;
+}
+
+.success-button2 {
+  @extend %base-button2;
+  background-color: #00ff00;
+  color: #ffffff;
+}
+
+.box5 {
+  width: 10px;
+  height: 10px;
+
+  @at-root .child5 {
+    width: 20px;
+    height: 20px;
+  }
+
+  @at-root {
+    .child6 {
+      width: 20px;
+      height: 20px;
+      @at-root {
+        .child6-1 {
+          padding: 15px;
+        }
+      }
+    }
+    .child7 {
+      width: 30px;
+      height: 30px;
+    }
+  }
+}
