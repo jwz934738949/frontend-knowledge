@@ -1,0 +1,24 @@
+{
+  "name": "postcss-demo",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev:watch": "postcss ./src/index.css -o ./dist/build.css --watch",
+    "build": "postcss ./src/index.css -o ./dist/build.css",
+    "build:prod": "postcss ./src/index.css -o ./dist/build.css --no-map"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@10.17.0",
+  "devDependencies": {
+    "@types/node": "^24.10.0",
+    "autoprefixer": "^10.4.21",
+    "postcss": "^8.5.6",
+    "postcss-cli": "^11.0.1",
+    "typescript": "^5.9.3"
+  }
+}

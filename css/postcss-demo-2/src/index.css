@@ -1,0 +1,36 @@
+@import url("variable");
+@import url("variable2");
+
+::placeholder {
+  color: gray;
+}
+
+.image {
+  background-color: #f00;
+}
+
+@media (resolution >= 2dppx) {
+  .image {
+    padding: 15px;
+    width: 20px;
+    height: 20px;
+    background-color: #ff0;
+  }
+}
+
+.a {
+  color: red;
+
+  &.b {
+    color: green;
+    transform: translate(100px);
+  }
+
+  & > .b {
+    color: blue;
+  }
+
+  &:hover {
+    color: #000;
+  }
+}
