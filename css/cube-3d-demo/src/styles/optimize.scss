@@ -1,0 +1,89 @@
+// 使用scss进行优化
+@use "sass:list";
+
+$container-size: 150px;
+$hover-translate-z: 200px;
+$translate-z: calc($container-size / 2);
+$div-count: 6;
+$total-faces: 12;
+
+$rotate-map: (
+  "",
+  rotateX(-180deg),
+  rotateX(90deg),
+  rotateX(-90deg),
+  rotateY(90deg),
+  rotateY(-90deg)
+);
+
+@mixin face($index, $rotate, $img-index) {
+  &:nth-child(#{$index}) {
+    transform: #{$rotate} translateZ($translate-z);
+    background: url(../assets/#{$img-index}.jpg) white no-repeat center/cover;
+  }
+}
+
+@mixin face-hover($index, $rotate) {
+  div:nth-child(#{$index}) {
+    transform: #{$rotate} translateZ($hover-translate-z);
+  }
+}
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  background-color: #000;
+  /* 视距 增加盒子的立体感 */
+  perspective: 1000px;
+}
+
+.container {
+  position: relative;
+  width: $container-size;
+  height: $container-size;
+  /* 让子元素保留其3D位置 */
+  transform-style: preserve-3d;
+  animation: rotate 5s linear infinite;
+
+  div {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: all 1s;
+
+    // 生成所有12个面的样式（6个面 × 2层）
+    @for $index from 1 through $total-faces {
+      $face-index: (($index - 1) % $div-count) + 1;
+      $rotate: list.nth($rotate-map, $face-index);
+      $img-index: $face-index;
+
+      @include face($index, $rotate, $img-index);
+    }
+  }
+
+  &:hover {
+    @for $index from 1 through $div-count {
+      @include face-hover($index, #{list.nth($rotate-map, $index)});
+    }
+  }
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotateY(0) rotateX(0);
+  }
+
+  100% {
+    transform: rotateY(360deg) rotateX(360deg);
+  }
+}

@@ -190,99 +190,98 @@
   样例 ./postcss-demo-2/post.config.js
 ```
 #### 5. 插件介绍
-##### 5.1 autoprefixer
-- 用于兼容不同浏览器，添加前缀、编译成浏览器可以生效的css代码
-- browserlist 兼容浏览器版本配置信息
-  - last n versions 兼容最近n个版本
-  - n% 支持全球使用率超过 n% 的浏览器
-  - cover n：覆盖n%的浏览器
-  - not dead：支持所有更新中的浏览器
-  - not ie<11：不支持ie11以下的浏览器
-  - chrome>=n 支持 chrome浏览器大于等于n的版本
-  - 官方文档：https://github.com/browserslist/browserslist#full-list
-  - https://github.com/browserslist/browserslist#query-composition
-- 配置方式
-  - 根目录添加.browserslistrc
-  - package.json配置
-  ```json
-    {
-      "name": "xxx",
-      "version": : "xxx",
-      ...
-      "browserslist": [
-        "> 1%",
-        "last 2 versions",
-        "not dead"
-      ]
-    }
-  ```
-  - postcss.config.js插件autoprefixer配置
-##### 5.2. cssnano
-- 用于进行css代码压缩
-- 官方文档：https://cssnano.co/
-- 自定义cssnano默认的功能
-- cssnano配置属性：https://cssnano.co/docs/what-are-optimisations/
-```js
-  cssnano({
-      preset: [
-        'default',
-        {
-          discardComments: false,
-          discardEmpty: false
+  ##### 5.1 autoprefixer
+    - 用于兼容不同浏览器，添加前缀、编译成浏览器可以生效的css代码
+    - browserlist 兼容浏览器版本配置信息
+      - last n versions 兼容最近n个版本
+      - n% 支持全球使用率超过 n% 的浏览器
+      - cover n：覆盖n%的浏览器
+      - not dead：支持所有更新中的浏览器
+      - not ie<11：不支持ie11以下的浏览器
+      - chrome>=n 支持 chrome浏览器大于等于n的版本
+      - 官方文档：https://github.com/browserslist/browserslist#full-list
+      - https://github.com/browserslist/browserslist#query-composition
+    - 配置方式
+      - 根目录添加.browserslistrc
+      - package.json配置
+        ```json
+          {
+            "name": "xxx",
+            "version": : "xxx",
+            ...
+            "browserslist": [
+              "> 1%",
+              "last 2 versions",
+              "not dead"
+            ]
+          }
+        ```
+      - postcss.config.js插件autoprefixer配置
+  ##### 5.2. cssnano
+    - 用于进行css代码压缩
+    - 官方文档：https://cssnano.co/
+    - 自定义cssnano默认的功能
+    - cssnano配置属性：https://cssnano.co/docs/what-are-optimisations/
+      ```js
+        cssnano({
+            preset: [
+              'default',
+              {
+                discardComments: false,
+                discardEmpty: false
+              }
+            ]
+          })
+      ```
+  ##### 5.3. stylelint
+    - 格式化css样式，统一风格
+      ```bash
+        # stylelint 格式化css样式工具
+        # stylelint-config-standard 格式化css默认规则
+        pnpm add -D stylelint stylelint-config-standard
+      ```
+    - 项目根目录添加.stylelintrc.json，用于配置格式化规则
+      ```json
+      {
+        "extends": "stylelint-config-standard",
+        "rules": {
+            "comment-empty-line-before": null
         }
-      ]
-    })
-```
-##### 5.3. stylelint
-- 格式化css样式，统一风格
-```bash
-  # stylelint 格式化css样式工具
-  # stylelint-config-standard 格式化css默认规则
-  pnpm add -D stylelint stylelint-config-standard
-```
-- 项目根目录添加.stylelintrc.json，用于配置格式化规则
-```json
-{
-  "extends": "stylelint-config-standard",
-  "rules": {
-      "comment-empty-line-before": null
-  }
-}
-```
-- 校验规则：https://stylelint.io/user-guide/rules/
-- stylelint插件的fix 配置项配置为true, 自动修复问题
-##### 5.4. postcss-preset-env
-- 使用css新特性时，为了避免旧版浏览器无法运行新的css语法，使用postcss-preset-env，将最新语法转为浏览器可以识别的语法
-- 配置项
-  - stage 设置要使用的特性的阶段，默认值为（0-4）。数字越小，稳定性越低
-  - browsers 设置目标浏览器范围，如：'last 2 versions' 或 '>1%'
-  - autoprefixer：设置自动添加浏览器厂商前缀的配置，如：{grid: true }
-  - preserve 是否保留原始CSS代码，默认为false。如果设置为true，则会在转换后的代码后面保留原始代码，以便新浏览器优先使用新语法
-##### 5.5. postcss-import
-- 导入多个文件时，进行合并，避免http请求多次，提升性能
-- 配置项
-  - path 查找路径，默认为当前文件夹
-  - plugins 在执行import操作，可以添加其他的插件，优先进行处理后在执行import操作
-  - 官方文档：https://github.com/postcss/postcss-import
-
-##### 5.6. purgecss
-- 对css中没有使用到的内容进行移除，减少css文件大小，提升性能
-- 官方文档：https://purgecss.com/
-```bash
-  pnpm add @fullhuman/postcss-purgecss -D
-```
-- 配置项
-  - safelist 可以指定一个字符串的值，或者指定一个正则表达式，该配置项目所对应的值（CSS 样式规则）始终保留，即便在参照文件中没有使用到也需要保留
-
-  ```js
-    purgecssPlugin({
-        content: ['./src/**/*.html', './src/**/*.js'],
-        // 匹配 active- 开头的类名，这些类名即便在项目文件中没有使用到，但是也不要删除
-        safelist: [/^active-/],
-    })
-  ```
-
-
+      }
+      ```
+    - 校验规则：https://stylelint.io/user-guide/rules/
+    - stylelint插件的fix 配置项配置为true, 自动修复问题
+  ##### 5.4. postcss-preset-env
+    - 使用css新特性时，为了避免旧版浏览器无法运行新的css语法，使用postcss-preset-env，将最新语法转为浏览器可以识别的语法
+    - 配置项
+      - stage 设置要使用的特性的阶段，默认值为（0-4）。数字越小，稳定性越低
+      - browsers 设置目标浏览器范围，如：'last 2 versions' 或 '>1%'
+      - autoprefixer：设置自动添加浏览器厂商前缀的配置，如：{grid: true }
+      - preserve 是否保留原始CSS代码，默认为false。如果设置为true，则会在转换后的代码后面保留原始代码，以便新浏览器优先使用新语法
+  ##### 5.5. postcss-import
+    - 导入多个文件时，进行合并，避免http请求多次，提升性能
+    - 配置项
+      - path 查找路径，默认为当前文件夹
+      - plugins 在执行import操作，可以添加其他的插件，优先进行处理后在执行import操作
+      - 官方文档：https://github.com/postcss/postcss-import
+  ##### 5.6. purgecss
+    - 对css中没有使用到的内容进行移除，减少css文件大小，提升性能
+    - 官方文档：https://purgecss.com/
+      ```bash
+        pnpm add @fullhuman/postcss-purgecss -D
+      ```
+    - 配置项
+      - safelist 可以指定一个字符串的值，或者指定一个正则表达式，该配置项目所对应的值（CSS 样式规则）始终保留，即便在参照文件中没有使用到也需要保留
+        ```js
+          purgecssPlugin({
+              content: ['./src/**/*.html', './src/**/*.js'],
+              // 匹配 active- 开头的类名，这些类名即便在项目文件中没有使用到，但是也不要删除
+              safelist: [/^active-/],
+          })
+        ```
 #### 6. 注意点
 - 使用postcss插件要注意顺序，引入的插件存在前后顺序的差异，第一个插件的结果会作为第二个插件的输入，进行处理后，交给第三个插件；顺序不对会导致报错，无法进行css处理生成编译后文件
-   
+#### 7. 代码位置
+  - ./postcss-demo-2
+## 实际开发-旋转魔方
+  - ./cube-3d-demo

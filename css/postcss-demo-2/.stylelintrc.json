@@ -1,4 +1,4 @@
-export default {
+{
   "extends": "stylelint-config-standard",
   "ignoreFiles": [
     // 忽略 dist 文件夹下所有文件（含子文件夹）
