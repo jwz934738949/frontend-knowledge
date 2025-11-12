@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>loading-demo</title>
+    <link href="../dist/output.css" rel="stylesheet" />
+  </head>
+  <body class="w-screen h-screen flex justify-center items-center">
+    <!-- 最外层容器 -->
+    <div class="w-32 h-4 flex justify-between">
+      <!-- 粉红色方块 -->
+      <div class="w-4 h-4 animate-slide">
+        <div class="absolute w-4 h-4 rounded-15 shadow-span bg-pink-400"></div>
+      </div>
+
+      <!-- 蓝色方块容器 -->
+      <div class="w-24 flex justify-between">
+        <div class="w-4 h-4 animate-jump-off-1">
+          <div
+            class="absolute w-4 h-4 rounded-15 shadow-span bg-blue-500 brightness-100 animate-jump-down-1"
+          ></div>
+        </div>
+        <div class="w-4 h-4 animate-jump-off-2">
+          <div
+            class="absolute w-4 h-4 rounded-15 shadow-span bg-blue-500 brightness-140 animate-jump-down-2"
+          ></div>
+        </div>
+        <div class="w-4 h-4 animate-jump-off-3">
+          <div
+            class="absolute w-4 h-4 rounded-15 shadow-span bg-blue-500 brightness-155 animate-jump-down-3"
+          ></div>
+        </div>
+        <div class="w-4 h-4 animate-jump-off-4">
+          <div
+            class="absolute w-4 h-4 rounded-15 shadow-span bg-blue-500 brightness-170 animate-jump-down-4"
+          ></div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
