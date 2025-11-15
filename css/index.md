@@ -329,3 +329,17 @@
       样例：./tailwindcss-demo
       样例2(loading动画)：./taildindcss-demo-2
     ```
+
+### 插件
+
+ - 官网插件 https://github.com/aniftyco/awesome-tailwindcss
+
+### 组件
+
+ - 使用@apply关键字进行一组tailwind原子组件的定义，用于复用相同样式在不同地方，减少后续修改工作量，便于维护
+
+   ```
+   样例 ./tailwindcss-demo-3
+   ```
+
+   

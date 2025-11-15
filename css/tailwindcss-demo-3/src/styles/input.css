@@ -1,0 +1,26 @@
+@import "tailwindcss";
+
+:root {
+  font-size: 50px;
+}
+
+@theme {
+  --radius-15: 15%;
+  --shadow-span: 0 0 0.1em rgba(0, 0, 0, 0.3);
+}
+
+.item {
+  @apply float-left max-w-56 h-40 shadow-md;
+}
+
+.item-input {
+  @apply opacity-0 cursor-pointer w-8 h-40 transition-[width] duration-200 checked:w-56;
+}
+
+.bg-image {
+  @apply bg-no-repeat bg-center bg-cover;
+}
+
+.bg {
+  @apply opacity-0 absolute top-0 left-0 w-screen h-screen -z-1 blur-[2.5px] peer-checked:opacity-100;
+}
