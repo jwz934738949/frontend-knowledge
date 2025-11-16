@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>dark-demo</title>
+    <link href="../dist/output.css" rel="stylesheet" />
+  </head>
+
+  <body
+    class="w-screen h-screen flex justify-center items-center bg-white dark:bg-gray-900"
+  >
+    <div
+      class="w-1/2 bg-white dark:bg-gray-800 rounded-lg px-6 py-8 ring shadow-xl ring-gray-900/5"
+    >
+      <div
+        class="border-b flex items-center justify-between p-2 text-black dark:text-white"
+      >
+        <span>title</span>
+        <button
+          id="toggle"
+          class="bg-blue-300 rounded-md px-4 py-2 text-gray-800 cursor-pointer"
+        >
+          切换主题
+        </button>
+      </div>
+      <h3
+        class="text-gray-900 dark:text-white mt-5 text-base font-medium tracking-tight"
+      >
+        Writes upside-down
+      </h3>
+      <p class="text-gray-500 dark:text-gray-400 mt-2 text-sm">
+        The Zero Gravity Pen can be used to write in any orientation, including
+        upside-down. It even works in outer space.
+      </p>
+    </div>
+  </body>
+  <script>
+    // 手动切换浅色或深色主题
+    const btn = document.getElementById("toggle");
+    btn.onclick = function () {
+      document.documentElement.classList.toggle("dark");
+    };
+  </script>
+</html>

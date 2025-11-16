@@ -1,0 +1,7 @@
+@import "tailwindcss";
+
+/* 添加后手动切换主题才会生效 */
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+}

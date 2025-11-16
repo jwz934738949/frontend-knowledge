@@ -1,0 +1,32 @@
+@import "tailwindcss";
+
+@theme {
+  --breakpoint-sm: 576px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 992px;
+  --breakpoint-xl: 1200px;
+}
+
+.nav-li {
+  @apply leading-[80px] py-0 px-[1.2vw] relative cursor-pointer after:content-[''] after:w-0 after:h-[2px] after:absolute after:left-0 after:bottom-[4px] after:bg-[#222] after:duration-800 after:ease-linear hover:after:w-full max-md:leading-[50px] max-sm:w-full max-sm:bg-[#eee] max-sm:text-center max-sm:border-b max-sm:border-b-white max-sm:after:bottom-0;
+}
+
+.nav-li-a {
+  @apply text-[#777];
+}
+
+.pic-li {
+  @apply w-screen h-full;
+}
+
+.project-item {
+  @apply flex flex-col items-center my-[15px] mx-0 py-[20px] px-[10px] border border-[#ddd] text-center md:w-[46%] lg:w-[30%] xl:w-[22%];
+}
+
+.project-item-img {
+  @apply w-[90%] opacity-90 cursor-pointer rounded-[10px] duration-300 hover:scale-[1.1] hover:opacity-100;
+}
+
+.project-item-p {
+  @apply font-thin mt-[10px];
+}

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>响应式-demo</title>
+    <link href="../dist/output.css" rel="stylesheet" />
+  </head>
+
+  <body>
+    <!-- 头部 -->
+    <header
+      id="header"
+      class="w-screen h-[80px] py-0 px-[10vw] box-border bg-[#f9f9f9] border-b border-b-[#ccc] flex justify-between items-center fixed left-0 top-0 z-100 max-md:h-[50px]"
+    >
+      <!-- logo 部分 -->
+      <div
+        class="w-[70px] h-full bg-[url(../src/img/logo.png)] bg-center bg-contain bg-no-repeat"
+      ></div>
+      <!-- 导航栏 -->
+      <nav class="flex items-center">
+        <ul
+          class="flex max-sm:h-0 max-sm:overflow-hidden max-sm:duration-500 max-sm:flex-wrap max-sm:relative max-sm:top-[25px]"
+        >
+          <li class="nav-li"><a href="#" class="nav-li-a">网站首页</a></li>
+          <li class="nav-li"><a href="#" class="nav-li-a">公司介绍</a></li>
+          <li class="nav-li"><a href="#" class="nav-li-a">产品介绍</a></li>
+          <li class="nav-li"><a href="#" class="nav-li-a">大事件</a></li>
+          <li class="nav-li"><a href="#" class="nav-li-a">联系我们</a></li>
+        </ul>
+        <!-- 汉堡按钮，全屏状态下是不显示的 -->
+        <button
+          class="w-[50px] h-[50px] cursor-pointer bg-[url(../src/img/btn.png)] bg-center bg-no-repeat hidden max-sm:block"
+        ></button>
+      </nav>
+    </header>
+    <!-- 轮播图 -->
+    <div
+      id="pic"
+      class="w-full h-[70vh] relative overflow-hidden mt-[80px] max-md:h-[50vh] max-md:mt-[50px] max-sm:h-[40vh]"
+    >
+      <ul
+        class="w-[300vw] h-full flex absolute left-0 transition-all duration-1000"
+      >
+        <li
+          class="pic-li bg-[url(../src/img/1.jpg)] bg-center bg-cover bg-no-repeat"
+        ></li>
+        <li
+          class="pic-li bg-[url(../src/img/2.jpg)] bg-center bg-cover bg-no-repeat"
+        ></li>
+        <li
+          class="pic-li bg-[url(../src/img/3.jpg)] bg-center bg-cover bg-no-repeat"
+        ></li>
+      </ul>
+    </div>
+    <!-- 热销项目 -->
+    <div class="my-[50px] mx-0">
+      <!-- 标题 -->
+      <div class="text-center mb-[20px] text-[#bbb]">
+        <h2 class="text-[36px] font-thin">热销项目</h2>
+        <p>Hot selling tour line</p>
+      </div>
+      <!-- 项目列表 -->
+      <div
+        class="w-4/5 my-0 mx-auto flex flex-wrap justify-around md:w-[720px] lg:w-[960px] xl:w-[1140px]"
+      >
+        <div class="project-item">
+          <img src="../src/img/7.png" alt="" class="project-item-img" />
+          <p class="project-item-p">尼罗河是世界上最长的河流</p>
+        </div>
+        <div class="project-item">
+          <img src="../src/img/7.png" alt="" class="project-item-img" />
+          <p class="project-item-p">尼罗河是世界上最长的河流</p>
+        </div>
+        <div class="project-item">
+          <img src="../src/img/7.png" alt="" class="project-item-img" />
+          <p class="project-item-p">尼罗河是世界上最长的河流</p>
+        </div>
+        <div class="project-item">
+          <img src="../src/img/7.png" alt="" class="project-item-img" />
+          <p class="project-item-p">尼罗河是世界上最长的河流</p>
+        </div>
+        <div class="project-item">
+          <img src="../src/img/7.png" alt="" class="project-item-img" />
+          <p class="project-item-p">尼罗河是世界上最长的河流</p>
+        </div>
+        <div class="project-item">
+          <img src="../src/img/7.png" alt="" class="project-item-img" />
+          <p class="project-item-p">尼罗河是世界上最长的河流</p>
+        </div>
+        <div class="project-item">
+          <img src="../src/img/7.png" alt="" class="project-item-img" />
+          <p class="project-item-p">尼罗河是世界上最长的河流</p>
+        </div>
+        <div class="project-item">
+          <img src="../src/img/7.png" alt="" class="project-item-img" />
+          <p class="project-item-p">尼罗河是世界上最长的河流</p>
+        </div>
+        <div class="project-item">
+          <img src="../src/img/7.png" alt="" class="project-item-img" />
+          <p class="project-item-p">尼罗河是世界上最长的河流</p>
+        </div>
+        <div class="project-item">
+          <img src="../src/img/7.png" alt="" class="project-item-img" />
+          <p class="project-item-p">尼罗河是世界上最长的河流</p>
+        </div>
+        <div class="project-item">
+          <img src="../src/img/7.png" alt="" class="project-item-img" />
+          <p class="project-item-p">尼罗河是世界上最长的河流</p>
+        </div>
+        <div class="project-item">
+          <img src="../src/img/7.png" alt="" class="project-item-img" />
+          <p class="project-item-p">尼罗河是世界上最长的河流</p>
+        </div>
+      </div>
+    </div>
+    <!-- 页尾 -->
+    <footer
+      class="w-full h-[500px] bg-[url(../src/img/bottom.jpg)] bg-center bg-cover bg-no-repeat max-md:h-[400px] max-sm:h-[300px]"
+    ></footer>
+
+    <script>
+      // 获取按钮元素
+      const btn = document.querySelector("#header button");
+      // 获取ul列表
+      const ul = document.querySelector("#header ul");
+      // 设置初始化是否显示ul列表
+      let display = false;
+
+      // 监听窗口变化，当宽带大于sm宽度，隐藏下拉菜单
+      window.addEventListener("resize", () => {
+        // 获取当前窗口宽度
+        const windowWidth = window.innerWidth;
+
+        if (windowWidth > 578) {
+          display = false;
+          ul.style.overflow = "hidden";
+        }
+      });
+
+      // 按钮点击，显示或隐藏下拉菜单
+      btn.onclick = function () {
+        display = !display;
+        ul.style.overflow = display ? "visible" : "hidden";
+      };
+
+      // 轮播图自动滚动
+      const swiper = document.querySelector("#pic ul");
+      let i = 0;
+      setInterval(() => {
+        let length = i * -100;
+        // 轮播图宽度为100vw, 0-第一张轮播图，-100vw第二张轮播图，-200vw第三张轮播图
+        swiper.style.transform = `translateX(${length}vw)`;
+        i++;
+        // 第三张展示完毕，重新从0开始循环
+        if (i > 2) {
+          i = 0;
+        }
+      }, 2000);
+    </script>
+  </body>
+</html>

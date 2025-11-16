@@ -342,4 +342,57 @@
    样例 ./tailwindcss-demo-3
    ```
 
-   
+
+### 响应式设计
+
+- sm: >=640px
+
+- md: >=768px
+
+- lg: >=1024px
+
+- xl: >=1280px
+
+- 2xl: >=1536px
+
+- 使用
+
+  ```html
+  <div class="sm:w-5 md:w-10 lg:w-15 xl:w-20 2xl:w-25"></div>
+  ```
+
+  ```
+  样例 ./tailwindcss-demo-4
+  ```
+
+
+### 深色模式
+
+ - tailwindcss默认支持浅色模式/深色模式
+
+ - 使用dark:变体实现深色模式下的样式
+
+   ```html
+   <!-- 浅色模式字体颜色为黑色，深色模式下为白色 -->
+   <div class="text-black dark:text-white">test</div>
+   ```
+
+- 默认情况下，tailwindcss会识别系统当前主题，自动切换浅色或者深色主题
+
+- 可以进行手动切换主题色
+
+  ```css
+  /* input.css */
+  /* 添加该代码后，可以手动进行主题切换 */
+  @custom-variant dark (&:where(.dark, .dark *));
+  ```
+
+  ```js
+  // 手动切换浅色或深色主题
+  const btn = document.getElementById("toggle");
+  btn.onclick = function () {
+     document.documentElement.classList.toggle("dark");
+  };
+  ```
+
+  
