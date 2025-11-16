@@ -1,4 +1,6 @@
 @import "tailwindcss";
+@source inline("underline absolute top-5 top-10");
+@source inline("{hover:,focus:,}text-white {after:,before:,}bg-white");
 
 /* 添加后手动切换主题才会生效 */
 @custom-variant dark (&:where(.dark, .dark *));

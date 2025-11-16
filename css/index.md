@@ -300,7 +300,9 @@
   - ./postcss-demo-2
 ## 实际开发-旋转魔方
   - ./cube-3d-demo
+
 ## tailwindcss
+
   ### 官网地址：https://tailwindcss.com/
   ### 使用步骤
   1. 创建项目后，安装tailwindcss依赖
@@ -395,4 +397,71 @@
   };
   ```
 
+
+### 生产构建优化
+
+	#### Tree Shaking
+
+ - tailwindcss 里面要进行 tree shaking 操作，会用到 purgecss 插件，该插件实际上就是做 css 版本的 tree shaking，会将没有使用到的样式类进行一个删除。tailwindcss 里面是内置了 purgecss 插件的，原因很简单，tailwindcss 是一定需要做 tree shkaing 的，因为tailwindcss 里面有大量的原子类。
+
+ - v2.0版本开始会默认配置purgecss，无需手动配置
+
+ - @source inline用于保存原子类，不管有没有使用到该原子类，打包后会包含该原子类
+
+   ```css
+   @import "tailwindcss";
+   @source inline("underline");
+   
+   /* 生成构建后的css中会包含underline */
+   .underline {
+     text-decoration-line: underline;
+   }
+   ```
+
+#### 限制变体生成
+
+- tailwindcss中变体hover、focus等会包含着原子类，当变体与原子类组合后，会生成大量css样式，需要进行处理，将没有使用过的组合删除
+
+- v2.0中默认会对变体生成进行处理，删除没有使用到的变体
+
+- @source inline也可以保存变体以及原子类的组合
+
+  ```css
+  @import "tailwindcss";
+  @source inline("{hover:,focus:,}underline");
   
+  /* 生成构建后的css中会包含hover:underline,focus:underline */
+  .underline {
+    text-decoration-line: underline;
+  }
+  @media (hover: hover) {
+    .hover\:underline:hover {
+      text-decoration-line: underline;
+    }
+  }
+  @media (focus: focus) {
+    .focus\:underline:focus {
+      text-decoration-line: underline;
+    }
+  }
+  ```
+
+#### 使用postcss进行后处理
+
+```bash
+pnpm add cssnano postcss-cli @tailwindcss/postcss autoprefixer -D
+```
+添加postcss.config.js,并进行如下配置
+```js
+import autoprefixer from "autoprefixer";
+import cssnano from "cssnano";
+import tailwindcss from "@tailwindcss/postcss";
+
+const config = {
+  plugins: [tailwindcss(), autoprefixer(), cssnano()].filter(Boolean),
+};
+
+export default config;
+
+```
+
